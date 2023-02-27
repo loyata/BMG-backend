@@ -1,1 +1,1 @@
-web: gunicorn e-hospital-liver:app
+web: gunicorn app:app
