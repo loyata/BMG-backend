@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:$8080 e-hospital-liver:app
+web: gunicorn --bind 0.0.0.0 e-hospital-liver:app

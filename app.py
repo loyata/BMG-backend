@@ -35,10 +35,6 @@ cnx = mysql.connector.connect(
 )
 
 
-@app.route("/", methods=["GET"])
-def index():
-    return "this is index"
-
 @app.route("/get_my_ip", methods=["GET"])
 def get_my_ip():
     return jsonify({'ip': request.remote_addr}), 200
@@ -122,4 +118,4 @@ def predict_liver_disease():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=8081)
