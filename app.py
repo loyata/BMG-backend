@@ -27,12 +27,12 @@ app = Flask(__name__)  # See here
 # mysql = MySQL(app)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-cnx = mysql.connector.connect(
-    host='us-cdbr-east-06.cleardb.net',
-    user='b05e8c26aca707',
-    password='b1ead699',
-    database='heroku_6f03eb70d098e57'
-)
+# cnx = mysql.connector.connect(
+#     host='us-cdbr-east-06.cleardb.net',
+#     user='b05e8c26aca707',
+#     password='b1ead699',
+#     database='heroku_6f03eb70d098e57'
+# )
 
 
 @app.route("/get_my_ip", methods=["GET"])
@@ -42,6 +42,12 @@ def get_my_ip():
 
 @app.route("/liver_graph", methods=["GET"])
 def graph():
+    cnx = mysql.connector.connect(
+        host='us-cdbr-east-06.cleardb.net',
+        user='b05e8c26aca707',
+        password='b1ead699',
+        database='heroku_6f03eb70d098e57'
+    )
     cursor = cnx.cursor()
     query = "SELECT age, gender, COUNT(*) FROM liver WHERE prediction='yes' GROUP BY age, gender"
     cursor.execute(query)
@@ -64,6 +70,12 @@ def graph():
 @app.route("/predict_liver_disease", methods=["POST"])
 @cross_origin()
 def predict_liver_disease():
+    cnx = mysql.connector.connect(
+        host='us-cdbr-east-06.cleardb.net',
+        user='b05e8c26aca707',
+        password='b1ead699',
+        database='heroku_6f03eb70d098e57'
+    )
     data = request.json
     print(data)
     loaded_model = pickle.load(open('finalized_model.sav', 'rb'))
