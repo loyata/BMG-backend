@@ -129,5 +129,22 @@ def predict_liver_disease():
         return "input error"
 
 
+
+@app.route("/predict_MS", methods=["POST"])
+@cross_origin()
+def predict_MS():
+    MS_model = pickle.load(open('model', 'rb'))
+    file = request.files['file']
+    data = pd.read_csv(file)
+    X = data
+    # Make predictions on the test data
+    y_pred = MS_model.predict(X)
+    if (y_pred == 1):
+        diagnose = 'patient suffers from MS'
+    elif (y_pred == 0):
+        diagnose = 'patient does not suffer from MS'
+    print(diagnose)
+    return diagnose
+
 if __name__ == '__main__':
     app.run()
