@@ -43,10 +43,10 @@ def get_my_ip():
 @app.route("/liver_graph", methods=["GET"])
 def graph():
     cnx = mysql.connector.connect(
-        host='us-cdbr-east-06.cleardb.net',
-        user='b05e8c26aca707',
-        password='b1ead699',
-        database='heroku_6f03eb70d098e57'
+        host='frwahxxknm9kwy6c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        user='j6qbx3bgjysst4jr',
+        password='mcbsdk2s27ldf37t',
+        database='evjygdytdp2ev0d'
     )
     cursor = cnx.cursor()
     query = "SELECT age, gender, COUNT(*) FROM liver WHERE prediction='yes' GROUP BY age, gender"
