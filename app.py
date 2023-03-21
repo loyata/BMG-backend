@@ -46,8 +46,15 @@ def graph():
         host='frwahxxknm9kwy6c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
         user='j6qbx3bgjysst4jr',
         password='mcbsdk2s27ldf37t',
-        database='evjygdytdp2ev0d'
+        database='nkw2tiuvgv6ufu1z'
+        # port=3306
     )
+    # // host: "frwahxxknm9kwy6c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    #
+    # // user: "j6qbx3bgjysst4jr",
+    # // password: 'mcbsdk2s27ldf37t',
+    # // database: 'evjygdytdp2ev0d',
+
     cursor = cnx.cursor()
     query = "SELECT age, gender, COUNT(*) FROM liver WHERE prediction='yes' GROUP BY age, gender"
     cursor.execute(query)
